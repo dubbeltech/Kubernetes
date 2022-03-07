@@ -1,0 +1,30 @@
+apiVersion: v1
+kind: Service
+metadata:
+  creationTimestamp: "2022-03-07T11:32:28Z"
+  labels:
+    app: dubbel
+  name: dubbel
+  namespace: default
+  resourceVersion: "75192"
+  uid: 565fd2a0-441b-4b59-af2d-17087a7ff5df
+spec:
+  clusterIP: 10.97.24.100
+  clusterIPs:
+  - 10.97.24.100
+  externalTrafficPolicy: Cluster
+  internalTrafficPolicy: Cluster
+  ipFamilies:
+  - IPv4
+  ipFamilyPolicy: SingleStack
+  ports:
+  - nodePort: 30552
+    port: 8080
+    protocol: TCP
+    targetPort: 8080
+  selector:
+    app: dubbel
+  sessionAffinity: None
+  type: NodePort
+status:
+  loadBalancer: {}

@@ -1,0 +1,62 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    deployment.kubernetes.io/revision: "1"
+  creationTimestamp: "2022-03-07T11:01:48Z"
+  generation: 1
+  labels:
+    app: dubbel
+  name: dubbel
+  namespace: default
+  resourceVersion: "73888"
+  uid: 64203ef9-dc0b-4328-9c51-8aa213be0e40
+spec:
+  progressDeadlineSeconds: 600
+  replicas: 3
+  revisionHistoryLimit: 10
+  selector:
+    matchLabels:
+      app: dubbel
+  strategy:
+    rollingUpdate:
+      maxSurge: 25%
+      maxUnavailable: 25%
+    type: RollingUpdate
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: dubbel
+    spec:
+      containers:
+      - image: 1528762/dubbel
+        imagePullPolicy: Always
+        name: dubbel
+        resources: {}
+        terminationMessagePath: /dev/termination-log
+        terminationMessagePolicy: File
+      dnsPolicy: ClusterFirst
+      restartPolicy: Always
+      schedulerName: default-scheduler
+      securityContext: {}
+      terminationGracePeriodSeconds: 30
+status:
+  availableReplicas: 3
+  conditions:
+  - lastTransitionTime: "2022-03-07T11:01:57Z"
+    lastUpdateTime: "2022-03-07T11:01:57Z"
+    message: Deployment has minimum availability.
+    reason: MinimumReplicasAvailable
+    status: "True"
+    type: Available
+  - lastTransitionTime: "2022-03-07T11:01:48Z"
+    lastUpdateTime: "2022-03-07T11:01:57Z"
+    message: ReplicaSet "dubbel-64f9459f88" has successfully progressed.
+    reason: NewReplicaSetAvailable
+    status: "True"
+    type: Progressing
+  observedGeneration: 1
+  readyReplicas: 3
+  replicas: 3
+  updatedReplicas: 3
